@@ -1,26 +1,19 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Waypoint design tokens (Hifi page). ponytail: hex straight from Figma styles; add semantic aliases only when a later screen needs them. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-athens-gray: #eef0f2; /* grey/94  - page background */
+  --color-woodsmoke: #111316;   /* azure/8  - headings, dark surfaces */
+  --color-charade: #2e3440;     /* azure/22 - primary button, link text */
+  --color-spray: #7fe3f0;       /* cyan/72  - scan-frame corners */
+  --color-ghost: #c6cbd1;       /* azure/80 - QR label */
+  --color-oslo-gray: #8a9098;   /* grey/57  - dashed border */
+  --color-abbey: #4e545c;       /* grey/33  - secondary text */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-archivo: var(--font-archivo);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
 }
