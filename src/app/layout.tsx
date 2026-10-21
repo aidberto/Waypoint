@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +16,11 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Waypoint",
   description: "Scan to join your journey",
+};
+
+// Tint Safari's top bar / status area to the app background instead of white.
+export const viewport: Viewport = {
+  themeColor: "#eef0f2",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

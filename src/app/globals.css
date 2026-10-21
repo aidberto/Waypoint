@@ -14,8 +14,20 @@
   --font-mono: var(--font-ibm-plex-mono);
 }
 
+html,
+body {
+  background-color: #eef0f2; /* athens-gray — match the app bg, no white edges */
+}
+
 body {
   font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
   overflow: hidden;
   overscroll-behavior: none;
+}
+
+/* Animatable angle for the countdown dial so the wedge sweeps smoothly. */
+@property --sweep {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
