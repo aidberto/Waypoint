@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { STEPS, STRETCHES } from "@/lib/journey";
+import Scaler from "@/components/Scaler";
 import Scan from "@/components/screens/Scan";
 import Scanned from "@/components/screens/Scanned";
 import Join from "@/components/screens/Join";
@@ -40,19 +41,25 @@ export default function Waypoint() {
     [stretch, next],
   );
 
+  let screen: ReactNode;
   switch (current.type) {
     case "scan":
-      return <Scan onNext={next} />;
+      screen = <Scan onNext={next} />;
+      break;
     case "scanned":
-      return <Scanned onNext={next} onBack={back} />;
+      screen = <Scanned onNext={next} onBack={back} />;
+      break;
     case "join":
-      return <Join onNext={next} />;
+      screen = <Join onNext={next} />;
+      break;
     case "question":
-      return <Question stretch={stretch!} onNext={next} />;
+      screen = <Question stretch={stretch!} onNext={next} />;
+      break;
     case "response":
-      return <Response stretch={stretch!} onSubmit={submit} />;
+      screen = <Response stretch={stretch!} onSubmit={submit} />;
+      break;
     case "wait":
-      return (
+      screen = (
         <Wait
           stretch={stretch!}
           answer={answers[stretch!.id] ?? stretch!.preset}
@@ -60,8 +67,9 @@ export default function Waypoint() {
           onChange={back}
         />
       );
+      break;
     case "results":
-      return (
+      screen = (
         <Results
           stretch={stretch!}
           answer={answers[stretch!.id] ?? stretch!.preset}
@@ -69,7 +77,11 @@ export default function Waypoint() {
           onEnd={goSummary}
         />
       );
+      break;
     case "summary":
-      return <TripSummary answers={answers} onFinish={restart} />;
+      screen = <TripSummary answers={answers} onFinish={restart} />;
+      break;
   }
+
+  return <Scaler>{screen}</Scaler>;
 }
