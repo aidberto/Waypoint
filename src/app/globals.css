@@ -31,3 +31,14 @@ body {
   inherits: false;
   initial-value: 0deg;
 }
+
+/* Countdown flashes in the final seconds. */
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
